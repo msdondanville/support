@@ -1,0 +1,66 @@
+---
+title: "Customers & Invoices"
+description: "Working with customer profiles, invoices, credit memos, and payments."
+---
+
+<AccordionGroup>
+
+  <Accordion title="What's on a customer's detail page?">
+    Each customer profile has:
+
+    - **Overview** — total open balance, overdue amount, dunning state.
+    - **Contacts** — all billing contacts; the primary contact gets automated outreach.
+    - **Stuut Insights** — AI-generated profile of payment behavior (responsiveness, average days to pay, preferred channel).
+    - **Notes** — free-text notes visible to your team.
+    - **Tasks & Activity** — open/closed tasks plus a complete chronological log of every email, call, and reply.
+  </Accordion>
+
+  <Accordion title="How do I add a new contact for a customer?">
+    On the customer detail page, open the Contacts section and add the contact's name, email, phone, and role (Accounts Payable, Primary, Billing, etc.). Set them as the Primary to redirect future outreach. If you don't have a specific person, use a placeholder name and a general inbox email.
+
+    <Note>
+      **Heads up**
+      Changes made in Stuut do not flow back to your ERP. Update both if you need them in sync.
+    </Note>
+  </Accordion>
+
+  <Accordion title="How do I pause dunning for a customer?">
+    Open the customer detail page and use the dunning state dropdown. Built-in pause reasons include:
+
+    - Active dispute under investigation
+    - Customer is insolvent or in bankruptcy
+    - Third-party collection involvement
+    - Internal hold or other business reason
+
+    To re-engage, set the state back to Active Dunning. Admins can create custom dunning states in the Control Center.
+  </Accordion>
+
+  <Accordion title="What can I do from the Invoice page?">
+    Each invoice has a detail page with the amount, due date, payment method on file, the linked customer, the full activity timeline, and any PTP dates recorded. From here you can:
+
+    - Apply a template and send outreach for that specific invoice.
+    - Initiate a call about the invoice.
+    - View and upload invoice PDFs (if not auto-synced from your ERP).
+    - Select multiple invoices for the same customer and send a single combined email.
+  </Accordion>
+
+  <Accordion title="How do credit memos affect collections?">
+    Credit memos sync from your ERP and appear in a dedicated Credit Memos section and on each customer's profile. Allocated credits reduce the customer's balance and overdue amount; if a credit fully covers an invoice, dunning for that invoice stops.
+
+    <Warning>
+      **Watch out for unallocated credits**
+      Unallocated credits do
+      *not*
+      reduce balances, so outreach may overstate what a customer owes. Periodically filter the Credit Memos list to Open status and ask your ERP team to apply them.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="How do I read the Payments page?">
+    Each payment shows the date, customer, reference (PMT-…), amount, remaining unallocated amount, and whether it's been allocated to invoices. Open one to see the allocation table — which invoices it was applied to. If the payment hasn't been assigned, it appears as an **On Account Credit** sitting on the customer's account until your ERP allocates it. Status reads **Finalized** once posted in your ERP.
+  </Accordion>
+
+  <Accordion title="How do I filter the customer list?">
+    You can search by name or email and apply filters like balance over a threshold, active dunning, dunning state, or assignee. Sort by any column in the table to triage.
+  </Accordion>
+
+</AccordionGroup>

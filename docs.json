@@ -1,0 +1,90 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Stuut Support",
+  "description": "AI-powered help center for collectors, billing specialists, and finance staff.",
+  "colors": {
+    "primary": "#2F85DB",
+    "light": "#5DA5E8",
+    "dark": "#1B4F8F"
+  },
+  "favicon": "/logo/mascot.svg",
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg",
+    "href": "/"
+  },
+  "banner": {
+    "content": "Welcome to Stuut Support \u2014 your AI-powered help center.",
+    "dismissible": true
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Welcome",
+        "pages": [
+          "introduction"
+        ]
+      },
+      {
+        "group": "\ud83d\udcc2 Collections",
+        "pages": [
+          "collections/daily-workflow",
+          "collections/emails-and-drafts",
+          "collections/ai-call-agent",
+          "collections/promise-to-pay",
+          "collections/disputes",
+          "collections/payment-portal"
+        ]
+      },
+      {
+        "group": "\ud83d\udcb5 Cash App",
+        "pages": [
+          "cash-app/cash-application",
+          "cash-app/payments"
+        ]
+      },
+      {
+        "group": "\ud83d\udda5 Platform",
+        "pages": [
+          "platform/getting-started",
+          "platform/customers-invoices",
+          "platform/troubleshooting",
+          "platform/glossary"
+        ]
+      },
+      {
+        "group": "Resources",
+        "pages": [
+          "videos"
+        ]
+      }
+    ]
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Email support",
+        "href": "mailto:support@stuut.co"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Open Dashboard",
+      "href": "https://dashboard.stuut.co"
+    }
+  },
+  "footer": {
+    "socials": {
+      "website": "https://stuut.ai"
+    }
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ]
+  }
+}

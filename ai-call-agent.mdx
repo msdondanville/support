@@ -1,0 +1,47 @@
+---
+title: "AI Call Agent"
+description: "How to review automated phone calls and the tasks they generate."
+---
+
+<AccordionGroup>
+
+  <Accordion title="What does the AI call agent do?">
+    Stuut's call agent makes automated outbound phone calls at configured stages — for example, 10 days past due, 21 days past due. It introduces itself with a configured name (e.g., Grace, Catherine, Cimo), references your company, and discusses open invoices with the customer.
+
+    The agent can:
+
+    - Provide the customer's total balance and overdue amount.
+    - Handle common questions (where to send a check, request an invoice copy, take a payment promise).
+    - Detect another language and switch automatically (if multilingual support is enabled).
+    - Transfer the call to a live person if a transfer number is configured.
+    - Create tasks automatically based on the call outcome.
+  </Accordion>
+
+  <Accordion title="How do I review calls in the Call Inbox?">
+    Open the **Call Inbox** from the left sidebar. Each call shows:
+
+    - Date, time, and call duration
+    - Customer name and associated invoices
+    - Sentiment analysis (positive, neutral, negative)
+    - Task categories generated from the call
+    - Full transcript
+    - Audio playback and download
+
+    The same blue-dot / green-checkbox icons appear on each call so you can see which still have open tasks.
+  </Accordion>
+
+  <Accordion title="What happens after the call — automatic responses?">
+    Stuut reacts to each call outcome:
+
+    - **Promise to pay** — a Promise-to-Pay task is created with the date and method.
+    - **"Don't call me again"** — calling is disabled for that contact.
+    - **Invalid / disconnected number** — flagged as a bad number; calling stops.
+    - **Hangup or unanswered** — attempt is logged; the workflow continues to the next stage.
+    - **Transfer requested** — the agent attempts a transfer; if no number is configured, it offers a follow-up by email or callback.
+  </Accordion>
+
+  <Accordion title="Does the call agent speak other languages?">
+    Yes — if multilingual support is enabled by your admin, the agent detects when a customer responds in another language and switches automatically.
+  </Accordion>
+
+</AccordionGroup>

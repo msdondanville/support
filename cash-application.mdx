@@ -1,0 +1,190 @@
+---
+title: "Cash Application"
+description: "How Stuut matches incoming payments to open invoices and posts them to your ERP."
+---
+
+<AccordionGroup>
+
+  <Accordion title="What is Cash Application?">
+    Cash Application is the Stuut module that automates the most time-consuming part of AR: figuring out which customer paid you, and which of their invoices to apply the payment against.
+
+    The AI agent reads your bank transactions, your remittance data (from emails, PDFs, lockbox files, EDI, customer portals), and your open invoices, then proposes matches for you to review and finalize. Once finalized, applied payments post back to your ERP.
+
+    **What it handles automatically:**
+
+    - Reads every incoming bank transaction and identifies customer payments.
+    - Matches payments to open invoices using bank memo, remittance, and AR data simultaneously.
+    - Parses remittance in any format — PDFs, Excel, email bodies, EDI 820, lockbox files, even screenshots.
+    - Generates a plain-English rationale for every proposed match (preserved in your audit log).
+    - Auto-applies matches above your configured confidence threshold without review.
+    - Passes payment signals to Collections so dunning stops the moment an invoice is paid.
+    - Learns from every correction you make — match quality improves over time.
+
+    **What you still own:** reviewing matches below your auto-apply threshold, overriding wrong matches, resolving short pays / write-offs, and posting via Finalize.
+  </Accordion>
+
+  <Accordion title="What are the four sections of the Cash App interface?">
+    The Cash Application module has four tabs at the top of the screen:
+
+    | Section | What you'll find | When you use it |
+    |---|---|---|
+    | **Overview** | Summary metrics — payments ready to post, potential matches, automation rate. | Daily glance |
+    | **Bank Transactions** | Transactions identified as customer payments, with proposed matches, confidence scores, and rationale. | Daily — primary working view |
+    | **Remittances** | Every remittance Stuut has captured, filterable by source. | Several times a week, especially early on |
+    | **Bank Statements** | Raw bank statements Stuut has ingested. | Only if you upload statements manually |
+
+    Agent Settings is admin-only and configured during onboarding.
+  </Accordion>
+
+  <Accordion title="What's on the Bank Transactions screen?">
+    Every bank transaction Stuut receives lands here — customer payments, internal transfers, bank fees, anything. The agent's job is to determine: **is this a payment, which customer is it from, and which invoice(s) does it belong to.**
+
+    Each row shows the transaction amount, date, bank memo / reference text, and a Customer column. When the agent can identify the customer from the bank memo, it shows a suggested name with a confidence percentage. Rows with no customer assigned or low confidence need your attention.
+  </Accordion>
+
+  <Accordion title="How do I assign a customer to an unidentified transaction?">
+    1. Click the transaction row.
+    2. Confirm that the transaction is a payment.
+    3. Select **+ Invoice**.
+    4. In the Search field, type the customer name, invoice number, etc., and select from results. You can pick multiple invoices, and you can adjust if you accidentally select the wrong customer.
+    5. You'll only be able to post once the full payment amount has been allocated.
+  </Accordion>
+
+  <Accordion title="What do the payment statuses mean?">
+    | Status | What it means | Your action |
+    |---|---|---|
+    | **Potential Payment** | Agent is unsure if this is AR. | Open it and mark Yes/No to "Is this a payment?" — optionally add a comment. |
+    | **Needs Allocation** | Identified as AR but not yet fully allocated. | Manually search for and assign the correct invoices. |
+    | **Ready to Post** | Fully allocated, ready for the ERP. | Click **Post** from the workspace, or bulk-post from the list view. |
+    | **Posted** | Posted to your ERP. | No action needed. |
+  </Accordion>
+
+  <Accordion title="How do I exclude non-customer transactions like internal transfers and bank fees?">
+    Internal transfers, bank fees, and other non-AR items will appear in the list. If you see the same type of transaction repeatedly, add a guideline in Agent Settings (or ask your admin to) to exclude it automatically going forward. For example:
+
+    *"Any transaction with 'INTERNAL TRANSFER' in the bank memo is not a customer payment — exclude it."*
+
+    The agent already handles "internal transfer" out of the box, and learns from every transaction you manually mark as non-AR — eventually handling them without your help.
+  </Accordion>
+
+  <Accordion title="What is the Payment Workspace?">
+    When you click into any transaction or payment, the Payment Workspace shows three things side by side:
+
+    - **The bank transaction** — amount, date, account, raw memo/reference text.
+    - **The matched invoices** — what the agent proposes applying the payment against, with amounts and invoice numbers.
+    - **The remittance** — if Stuut found or you manually associated remittance data, it's shown here with parsed fields highlighted.
+
+    You'll also see a **confidence score** and the **AI rationale** — a plain-English explanation of why this match was proposed.
+  </Accordion>
+
+  <Accordion title="What's the AI rationale and how does the confidence score work?">
+    The **confidence score** is a percentage representing how certain the agent is the match is correct. The **AI rationale** is a plain-English explanation of why the match was proposed — for example:
+
+    *"Invoice number matched in remittance PDF. Payment amount of $4,181 equals the sum of invoices 10234 ($2,900) and 10198 ($1,281)."*
+
+    <Tip>
+      **The rationale is for audit purposes too**
+      You don't have to guess what a confidence score means — you can read exactly why the agent made the call. The rationale is preserved in your audit log.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="How does the matching algorithm decide which invoices to match?">
+    The agent uses remittance data, bank memo data, your AR / invoice data, configured guidelines, and historical payment behavior — all simultaneously. Common signals include:
+
+    - Invoice number in the bank memo or remittance (highest confidence).
+    - Payment amount equals one invoice exactly.
+    - Payment amount equals the sum of multiple invoices.
+    - Payment amount equals the customer's total outstanding balance.
+    - Origin company name in the bank memo (learned and stored from past transactions).
+    - Historical payment behavior and pattern recognition (learned over time).
+  </Accordion>
+
+  <Accordion title="What happens when there's no remittance?">
+    The agent doesn't stop. It applies fallback matching methods — amount matching, combination matching, balance matching, and historical pattern recognition — and surfaces a proposed match at a potentially lower confidence score. (If an invoice ID is in the transaction memo, that's still a high-confidence match regardless of remittance presence.)
+
+    If a customer is identified, Stuut makes it easy to send a remittance request to the customer in just a couple of clicks.
+  </Accordion>
+
+  <Accordion title="What remittance formats can Stuut read?">
+    Pretty much anything customers send:
+
+    - PDF attachments (scanned or digital)
+    - Excel and CSV attachments
+    - Screenshots of CSVs pasted into emails (no headers needed)
+    - Plain-text email bodies — no attachment required
+    - Images and photos of documents
+    - EDI 820 files
+    - Lockbox files (Bank of America, JPMC)
+    - Handwritten notes (check memos, deduction slips)
+
+    <Tip>
+      **The email body counts**
+      If a customer writes "This covers invoices 1002 and 1007" in the email body itself, Stuut treats that as remittance data — no attachment needed.
+    </Tip>
+  </Accordion>
+
+  <Accordion title="What do the remittance statuses mean?">
+    | Status | What it means |
+    |---|---|
+    | **Processing** | Being parsed — wait a moment. |
+    | **Invalid** | Not identified as a remittance. |
+    | **Processed** | Parsed successfully and ready to be matched. |
+
+    You can filter remittances by source using the filter at the top: Call, Email, Lockbox, EDI, or Manual Upload.
+  </Accordion>
+
+  <Accordion title="What happens when a customer short-pays an invoice?">
+    When the payment doesn't match an invoice (or combination of invoices) exactly, Stuut flags it as a partial payment and won't auto-apply — it requires a decision. If the remittance includes a deduction code or reason, Stuut extracts and shows it for context.
+
+    **Your options for the difference:**
+
+    - **Apply partial payment** and leave the balance open — collections continues for the unpaid amount.
+    - **Write off to a GL ledger** — for known recurring adjustments (early-pay discounts, rounding, bank fees). Configure auto-rules in Agent Settings.
+    - **Create a credit memo** to cover the difference and clear the invoice.
+    - **Flag as a dispute** if the deduction needs investigation first.
+
+    <Note>
+      **Cash App vs. Deductions**
+      Cash Application creates the deduction record when a short pay is detected; the separate Deductions module is where your team works reason codes, validates documentation, and resolves chargebacks. Cash App = intake, Deductions = resolution.
+    </Note>
+  </Accordion>
+
+  <Accordion title="What does 'Finalize' do — and how does the payment get to my ERP?">
+    When you click **Finalize**, Stuut sends the applied cash posting back to your ERP — invoice cleared, amount, date, any write-offs, and the remittance reference. The method depends on your setup:
+
+    - **Direct API** — modern cloud ERPs (NetSuite, Oracle Fusion, Dynamics 365, Workday, Infor, ServiceNow) post in real time.
+    - **Flat file (SFTP / S3)** — Stuut generates an output file your ERP ingests on a batch schedule.
+    - **CSV export (interim)** — for the first weeks, export a CSV from the Payments screen and upload it to your ERP using a CSM-provided template.
+
+    <Warning>
+      **Avoid double work**
+      Don't review in Stuut and re-key matches into the ERP manually — that's typically unsustainable. Get the integration or CSV workflow in place before go-live so Finalize handles posting.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="How do Cash Application and Collections work together?">
+    If you use both modules, they share intelligence automatically — no setup needed:
+
+    - **Collections → Cash App:** when a customer tells a collector "I just put an ACH in for $950k covering invoices 1–9," that information passes to Cash App as remittance data and informs the match when the bank transaction arrives.
+    - **Cash App → Collections:** when you finalize a payment in Cash App, dunning for that invoice stops immediately — no risk of past-due notices going out after payment.
+    - **Disputes:** when an invoice is flagged disputed in either module, Cash App pauses automated matching against it. Matching resumes when the dispute clears.
+
+    <Warning>
+      **Payment data must be in your sync**
+      For Collections to stop outreach correctly, payment data has to be part of your ERP sync. Without it, Stuut won't know an invoice is paid and will keep contacting customers who already paid.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="A payment arrived but it's not showing in Stuut.">
+    For Plaid connections, check the Bank Account settings page for any connection errors. If the payment is from JPMC or Citi and the live bank connection isn't yet set up, you may need to upload a statement manually. Contact your CSM if the issue persists beyond 24 hours.
+  </Accordion>
+
+  <Accordion title="The agent matched a payment to the wrong customer or invoices.">
+    Open the payment workspace, delete the incorrect customer or invoice, and add the correct one with **+ Invoice**. The correction is logged as training data right away. If the same misidentification keeps happening, ask your admin to add a rule in the Transaction Processing Guidelines field — for example, mapping that payer's origin company ID to the correct customer.
+  </Accordion>
+
+  <Accordion title="I finalized a payment incorrectly. Can I undo it?">
+    Only some integrations allow reverting a finalized payment. If the Finalize button is disabled after finalizing, your integration doesn't support reversal — you'll need to reverse and fix the payment directly in the ERP. Contact your CSM to discuss options for your specific setup.
+  </Accordion>
+
+</AccordionGroup>

@@ -1,0 +1,83 @@
+---
+title: "Payments"
+description: "How to read the Payments page, work with allocations, and reconcile what arrived in your ERP."
+---
+
+<AccordionGroup>
+
+  <Accordion title="What does the Payments page show?">
+    The Payments page tracks every incoming payment synced from your ERP — what's been received, what's been matched to invoices, and what's still in transit. It's where you go to verify customer claims, reconcile promise-to-pay commitments, and confirm dunning has stopped after payment.
+
+    Each row in the list shows:
+
+    - Date received
+    - Customer name
+    - Reference number (prefixed **PMT-**)
+    - Payment amount
+    - Remaining amount (the unallocated portion)
+    - Whether documentation was provided
+    - Allocation indicator (✓ or ✗)
+    - Confidence indicator
+    - Status
+  </Accordion>
+
+  <Accordion title="How do I search and filter payments?">
+    Use the search at the top to find payments by reference number or customer name. Filter buttons let you narrow by:
+
+    - **Date** — date received
+    - **Customer** — specific customer accounts
+    - **Account** — bank account the payment hit
+
+    Sort by any column header to triage quickly — for example, sort by Remaining Amount to find unallocated payments that need attention.
+  </Accordion>
+
+  <Accordion title="What do the allocation indicators (✓ / ✗) mean?">
+    The Allocated column shows at a glance whether a payment has been matched to specific invoices:
+
+    - **✓ (green checkmark)** — payment has been matched to invoices.
+    - **✗** — payment has not been matched yet.
+
+    The **Remaining Amount** column tells you how much of the payment is still unallocated — $0.00 means fully applied; anything else is the outstanding balance sitting on the customer's account.
+  </Accordion>
+
+  <Accordion title="What's on a payment's detail page?">
+    Click any payment to open its detail view. The left panel shows:
+
+    - Customer name (click to navigate to their account)
+    - Payment status badge (e.g., Posted)
+    - Reference number
+    - An invoice allocation table — which invoices the payment was applied to, with balances and allocated amounts
+
+    Below the allocation table you'll find:
+
+    - **Posted At** date — when the payment was recorded in your ERP
+    - **Processor ID** — the transaction identifier from your payment processor or ERP
+  </Accordion>
+
+  <Accordion title="What's an 'On Account Credit'?">
+    If a payment hasn't been assigned to specific invoices yet, you'll see *"Payment not assigned to invoices yet"* on the detail page, and the amount appears as an **On Account Credit** — the funds have been received but are sitting as a general credit on the customer's account.
+
+    This is expected for a short window while Cash Application matches the payment, or when remittance is missing. If a payment has been sitting as on-account for a while, check the customer's Credit Memos and remittance to figure out where it should be applied.
+  </Accordion>
+
+  <Accordion title="What does 'Finalized' status mean?">
+    All payments in the list carry a **Finalized** status once they've been posted and confirmed in your ERP. Finalized means the cash application is complete — the invoice was cleared, the payment is recorded against it, and Collections has been notified to stop dunning.
+
+    If you need to match and post a new payment, that work happens in the [Cash Application](#cash-application) module — the Payments page is where you go to view what's already been processed.
+  </Accordion>
+
+  <Accordion title="How do I verify a customer's claim that they paid?">
+    The Payments page is your reference for this. Workflow:
+
+    1. Search the customer's name or filter by Customer.
+    2. Look for a payment matching the date and amount they mentioned.
+    3. Open the detail to confirm allocation against the invoice in question.
+    4. If you don't see it, check whether your ERP sync has run recently — payment data might not have arrived yet.
+
+    <Warning>
+      **If the payment data isn't synced**
+      Stuut won't know the payment exists until your ERP sync includes it. If a customer insists they paid but you can't see it, discard any open drafts, add a note on the customer, and check back after the next sync.
+    </Warning>
+  </Accordion>
+
+</AccordionGroup>

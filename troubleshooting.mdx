@@ -1,0 +1,36 @@
+---
+title: "Troubleshooting"
+description: "Common issues and how to fix them."
+---
+
+<AccordionGroup>
+
+  <Accordion title="I can't log in. What do I do?">
+    Confirm with your IT admin that you've been added to the Stuut application in Azure / Microsoft 365 (or invited via Google). Then clear your browser cache and try again in a fresh browser window. Chrome or Edge are recommended.
+  </Accordion>
+
+  <Accordion title="A customer told me they paid, but Stuut still shows the invoice overdue.">
+    Payment data has likely not yet synced from your ERP. Check with your admin on the sync schedule. In the meantime, discard any open drafts for this customer and add a note. The status will update on the next successful sync.
+  </Accordion>
+
+  <Accordion title="I accidentally closed a task — can I reopen it?">
+    Unfortunately, tasks cannot be reopened once closed. Follow up with the customer manually outside Stuut, or ask your admin about creating a new task on the account.
+  </Accordion>
+
+  <Accordion title="A customer replied but no task was created. Why?">
+    Stuut only creates tasks from replies inside threads it initiated. If the customer sent a brand-new email (not a reply to a Stuut thread), it won't be captured automatically — you'll need to handle it manually.
+  </Accordion>
+
+  <Accordion title="The AI-drafted reply doesn't sound right.">
+    Always edit drafts before sending. The AI learns from your edits over time, so corrections now improve future drafts. If the tone is consistently off, flag it to your Stuut Customer Success Manager about targeted retraining.
+  </Accordion>
+
+  <Accordion title="The customer name appears in ALL CAPS.">
+    This usually comes from how names are stored in your ERP. Work with your IT team to add a name-formatting step in the data export or integration pipeline.
+  </Accordion>
+
+  <Accordion title="Outreach went to the wrong contact. How do I fix it?">
+    Go to the customer's Contacts tab and update the contact information. Stuut will use the corrected contacts for all future outreach. Follow up manually with the right contact for the immediate situation.
+  </Accordion>
+
+</AccordionGroup>

@@ -1,0 +1,56 @@
+---
+title: "Emails & Drafts"
+description: "How to review, edit, and send the emails Stuut drafts for you."
+---
+
+<AccordionGroup>
+
+  <Accordion title="What should I check before sending a draft?">
+    For every draft, verify:
+
+    - Customer name is correct and properly formatted (not in ALL CAPS).
+    - Invoice numbers, amounts, and due dates are accurate.
+    - Tone is appropriate for this customer and stage.
+    - The recipient is the right contact.
+    - Attached invoice PDFs are the correct documents.
+
+    If the invoice was already paid or the draft is no longer relevant, discard it instead of sending.
+  </Accordion>
+
+  <Accordion title="Can I edit a draft before sending?">
+    Yes — drafts are fully editable. You can change the body, adjust the recipient, add CC/BCC, attach files, insert hyperlinks, and even apply a different email template from within the draft editor. Click **Send** when satisfied. Sent emails appear under the Sent section of your Collections Inbox.
+  </Accordion>
+
+  <Accordion title="How do I send a manual email outside of a workflow?">
+    You can initiate outreach manually from several places:
+
+    - **Collections Inbox** — compose a new email from scratch.
+    - **Customer page** — click the email icon at the top.
+    - **Invoice page** — select one or more invoices and click Email to reference them.
+
+    You can apply any existing template to a manually started email.
+
+    <Warning>
+      **Cross-customer protection**
+      If you accidentally select invoices from two different customers, Stuut will block the send to prevent you from sharing one customer's information with another.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="How do I send to a different contact than the default?">
+    Automated outreach goes to the primary contact on file. You can:
+
+    - Override the recipient in the draft before sending.
+    - Add new contacts on the customer's profile and set a different one as primary.
+    - Use a placeholder name + general inbox email if no specific person is on file.
+
+    <Note>
+      **Note**
+      Contact changes made in Stuut do not flow back to your ERP — update both systems if you need consistency.
+    </Note>
+  </Accordion>
+
+  <Accordion title="How do email templates and dynamic fields work?">
+    Every Stuut email is based on a template tied to a workflow stage. Templates mix fixed copy with dynamic fields like `{{customer_name}}`, `{{invoice_amount}}`, `{{due_date}}`, and `{{portal_url}}`. When the email is generated, those placeholders are replaced with real customer data pulled from your ERP. Admins manage templates in the Control Center.
+  </Accordion>
+
+</AccordionGroup>

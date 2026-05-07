@@ -1,0 +1,49 @@
+---
+title: "Promise-to-Pay"
+description: "How Stuut captures, processes, and tracks customer payment commitments."
+---
+
+<AccordionGroup>
+
+  <Accordion title="How does Stuut capture a promise-to-pay?">
+    When a customer tells the AI call agent or writes in an email reply that they intend to pay, the AI extracts the promised date and payment method and creates a Promise-to-Pay task for you.
+
+    The AI does its best to interpret natural language — for example, "I'll send a check tomorrow" said on March 5th becomes March 6th. You can always adjust the date manually.
+  </Accordion>
+
+  <Accordion title="How do I acknowledge a promise-to-pay?">
+    From the Promise-to-Pay task, you have several options:
+
+    - **Acknowledge** by clicking the checkmark — confirms the promise and pauses dunning for those invoices until the date.
+    - **Edit the date** with the pencil icon if you want a different one.
+    - **Close individual invoice promises** if some don't apply (e.g., one was already paid).
+    - **Close the whole task** with no action if the promise isn't valid.
+
+    <Warning>
+      **Acknowledging vs. closing**
+      If you close a PTP task without acknowledging the dates, dunning will NOT pause. You must click the checkmark for the pause to take effect.
+    </Warning>
+  </Accordion>
+
+  <Accordion title="Why is the acknowledged PTP date later than the customer said?">
+    Stuut adds **payment processing days** based on the payment method to allow time for funds to actually arrive:
+
+    | Payment method | Days added |
+    |---|---|
+    | ACH | +3 days |
+    | Check | +14 days |
+    | Wire | +2–3 days |
+    | All other methods | +14 days |
+
+    Example: customer says on March 1 they'll mail a check tomorrow (March 2). The acknowledged PTP date becomes March 16 — preventing a false broken-promise flag before the check has time to arrive.
+  </Accordion>
+
+  <Accordion title="What's a Broken Promise task and when does it appear?">
+    If payment isn't received by the acknowledged PTP date (plus a grace period of 1–2 days), Stuut creates a Broken Promise task. It includes the original promise details — date, method, invoices — so you have full context for follow-up. Outreach will resume on those invoices.
+  </Accordion>
+
+  <Accordion title="Can the AI read attachments from a customer reply?">
+    Yes. If a customer replies with a screenshot of a payment confirmation or a remittance advice, the AI will attempt to read it and may update the PTP information automatically.
+  </Accordion>
+
+</AccordionGroup>
